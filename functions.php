@@ -59,6 +59,19 @@ function check_login($username, $role, $mot_de_passe) {
 
 
 
+
+
+function get_id_user_gerant() {
+    global $PDO;
+
+    $sql = "SELECT id FROM utilisateurs WHERE role = 'gerant' OR role = 'admin'";
+
+    $stmt = $PDO->prepare($sql);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 function get_shop() {
     global $PDO;
 
@@ -70,37 +83,52 @@ function get_shop() {
     return $stmt->fetchAll(PDO::FETCH_ASSOC); // Utiliser PDO::FETCH_ASSOC pour obtenir uniquement les clés associatives
 }
 
-function add_shop() {
+function add_shop($nom_boutique, $id_gerant, $numero_rue, $nom_rue, $code_postal, $ville, $pays) {
     global $PDO;
 
-    /* insert avec un formulaire*/
+    $sql = "INSERT INTO boutiques (nom, utilisateur_id, numero_rue, nom_adresse, code_postal, ville, pays)
+    VALUES (:nom, :id, :numero, :nom_rue, :code_postal, :ville, :pays)";
+    
+    $stmt = $PDO->prepare($sql);
+    $stmt->bindParam(':nom', $nom_boutique);
+    $stmt->bindParam(':id', $id_gerant);
+    $stmt->bindParam(':numero', $numero_rue);
+    $stmt->bindParam(':nom_rue', $nom_rue);
+    $stmt->bindParam(':code_postal', $code_postal);
+    $stmt->bindParam(':ville', $ville);
+    $stmt->bindParam(':pays', $pays);
+    
+    $stmt->execute();
+
+    echo("Boutique ajoutée !");
+
+    return true;
 }
 
 
-function get_products_and_their_stock($username, $role) {
+function get_products_and_their_stock($id_boutique, $id_utilisateur, $role) {
     global $PDO;
 
     if ($role == 'gerant') {
         $sql = "SELECT 
                 b.nom_boutique,
-                p.id_produit,
-                p.nom_produit,
-                p.prix_unitaire,
-                p.prix_au_kg,
+                c.id,
+                c.nom,
+                c.prix,
                 s.quantite
             FROM 
                 utilisateurs u
             JOIN 
-                boutiques b ON u.id_user = b.id_user
+                boutiques b ON u.id = b.id_user
             JOIN 
-                stock s ON b.id_boutique = s.id_boutique
+                stock s ON b.id = s.boutique_id
             JOIN 
-                produits p ON s.id_produit = p.id_produit
+                confiseries c ON s.produit_id = c.id
             WHERE 
-                u.username = :username";
+                b.id = :id_boutique";
 
         $stmt = $PDO->prepare($sql);
-        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':id_boutique', $username);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -65,7 +65,6 @@
     border: none; 
     background: none; 
 
-    cursor: pointer;
     padding: 10px;
     color: var(--couleur_texte_inactif);
     font-weight: 700;
@@ -87,7 +86,6 @@
 
 .login-form .submit-button {
     padding: 15px;
-    cursor: pointer;
     background-color: var(--jaune);
     font-weight: 800;
     border: none;

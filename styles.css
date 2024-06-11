@@ -88,7 +88,9 @@ b {
     font-weight: 900;
 }
 
-
+a, button, input[type="submit"] {
+    cursor: pointer;
+}
 
 html {
     scroll-behavior: smooth;
@@ -108,6 +110,7 @@ header {
     background-color: var(--rose_clair);
     position: fixed;
     z-index: 1;
+    box-shadow: 0px 0px 5px #000;
 }
 header>article {
     height: 120px;
@@ -439,4 +442,8 @@ footer>article>div>a:hover::after {
 }
 .pays {
     width: 100px;
+}
+.ajout-boutique-feedback {
+    padding: 5px !important;
+    background-color: var(--jaune) !important;
 }
