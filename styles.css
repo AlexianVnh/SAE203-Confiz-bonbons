@@ -380,11 +380,23 @@ footer>article>div>a:hover::after {
     background-color: var(--rose_clair);
     padding: 4px;
 }
+.barre-de-recherche>input[type="text"] {
+    height: 30px;
+    padding: 5px;
+    outline: none;
+    border: none;
+}
+
 .carte-boutiques-container {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
 }
-.carte-boutique {
+.carte-boutique { 
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 .carte-boutique img {
     object-fit: cover;
@@ -394,4 +406,37 @@ footer>article>div>a:hover::after {
     border: none;
     background-color: var(--rose_clair);
     padding: 10px;
+}
+
+.carte-boutique-ajout { /* container d'ajout de boutique */
+    display: flex;
+    flex-direction: column;
+    gap: 40px; 
+    width: 300px;
+    background-color: var(--rose_clair);
+    padding: 15px;
+}
+.form-ajout-boutique {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.form-ajout-boutique input {
+    padding: 5px;
+    margin: 3px 0;
+}
+.numero-rue {
+    width: 40px;
+}
+.nom-rue {
+    width: 200px;
+}
+.code-postal {
+    width: 60px;
+}
+.ville {
+    width: 200px;
+}
+.pays {
+    width: 100px;
 }

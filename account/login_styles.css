@@ -99,45 +99,45 @@
     flex-direction: column;
     gap: 30px;
 }
-.login-form div {
+.login-form>div {
     position: relative;
     display: flex;
     align-items: center;
     gap: 10px;
 }
-.login-form input {
+.login-form>div>input {
     width: 100%;
     padding: 10px 0 3px 0;
     border: none;
     border-bottom: solid 2px var(--couleur_texte);
     background-color: transparent;
 }
-.login-form label {
+.login-form>div>label {
     position: absolute;
     bottom: 7px; left: 35px;
     z-index: -1;
     transition: all 0.15s ease-in-out;
 }
-.login-form input:focus {
+.login-form>div>input:focus {
     outline: none;
 }
-.login-form input:focus ~ label {
+.login-form>div>input:focus ~ label {
     transform: translateY(-20px);
     font-weight: 300;
 }
 
 
-.login-form select {
+.login-form>div>select {
     width: 100%;
     padding: 6px 0;
     border: solid 2px var(--couleur_texte);
     background-color: transparent;
 }
-.login-form select:focus {
+.login-form>div>select:focus {
     outline: none;
     background-color: #f5cbd8;
 }
-.login-form select option {
+.login-form>div>select>option {
     background-color: #FFF;
 }
 

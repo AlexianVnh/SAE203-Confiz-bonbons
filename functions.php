@@ -70,6 +70,12 @@ function get_shop() {
     return $stmt->fetchAll(PDO::FETCH_ASSOC); // Utiliser PDO::FETCH_ASSOC pour obtenir uniquement les clés associatives
 }
 
+function add_shop() {
+    global $PDO;
+
+    /* insert avec un formulaire*/
+}
+
 
 function get_products_and_their_stock($username, $role) {
     global $PDO;

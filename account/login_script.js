@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* Pour que labels restent en haut et en régular */
 document.addEventListener('DOMContentLoaded', function() {
-    var inputElements = document.querySelectorAll('input[required]');
+    var inputElements = document.querySelectorAll('.login-input');
 
     inputElements.forEach(function(inputElement) {
         var labelElement = inputElement.nextElementSibling;

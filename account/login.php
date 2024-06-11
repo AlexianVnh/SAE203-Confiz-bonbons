@@ -20,7 +20,7 @@ include_once("../header.php");
                 <form class="login-form" action="login_verification.php" method="post">
                     <div>
                         <i class="fa-regular fa-user"></i>                        
-                        <input class="input-name" type="text" id="name" name="name" required>
+                        <input class="input-name login-input" type="text" id="name" name="name" required>
                         <label for="name">username</label>
                     </div>
                     <div>
@@ -33,7 +33,7 @@ include_once("../header.php");
                     </div>
                     <div>
                         <i class="fa-solid fa-lock"></i>                        
-                        <input class="input-password" type="password" id="password" name="password" required>
+                        <input class="input-password login-input" type="password" id="password" name="password" required>
                         <label for="password">Mot de passe :</label>
                         <button id="toggle-password"><i class="fa-solid fa-eye"></i></button>                        
                     </div>
