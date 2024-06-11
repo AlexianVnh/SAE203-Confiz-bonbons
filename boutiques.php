@@ -1,5 +1,5 @@
 <?php
-include_once("header.php");
+    include_once("header.php");
 ?>
 
 <!DOCTYPE html>
@@ -18,19 +18,17 @@ include_once("header.php");
     <section class="carte-boutiques-container w-70 padding-50y">
         <?php
             $shop = get_shop();
-            $indice_image = 1;
             foreach ($shop as $boutique) {
         ?>
         <article class="carte-boutique">
-            <img src="media/images/boutiques/<?=$indice_image?>.jpg" width="300" height="300" alt="">
+            <img src="media/images/boutiques/<?=$boutique['id']?>.jpg" width="300" height="300" alt="">
             <?php    
-                echo "Nom: " . $boutique['nom'] . "<br>";
+                echo "Nom : " . $boutique['nom'] . "<br>";
                 echo "Adresse : " . $boutique['numero_rue'] . " " . $boutique['nom_adresse'] . ", " . $boutique['code_postal'] . ", "  . $boutique['ville'] . ", " . $boutique['pays'] . "<br>";
             ?>
             <button class="boutique-voir-plus">Découvrir leurs produits ></button>
         </article>
         <?php        
-            $indice_image++;
             }
         ?>
     </section>

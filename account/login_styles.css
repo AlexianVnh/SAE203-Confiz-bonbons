@@ -85,7 +85,7 @@
     transition: width 0.15s ease-in-out;
 }
 
-.submit-button {
+.login-form .submit-button {
     padding: 15px;
     cursor: pointer;
     background-color: var(--jaune);
