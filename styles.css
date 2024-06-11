@@ -1,0 +1,397 @@
+:root {
+    --rose_fonce: #E71BC6; /* détails */
+    --rose_clair: #FFA7F1; /* background boutons, header et footer, et décos*/
+    --jaune: #FDD400; /* background sections, images */
+    --beige: #FFF3B6; /* background séparations */
+    --beige_clair: #FFF9EB; /* background body */
+
+    --police_60: 3.750rem; /* titres */
+    --police_30: 1.875rem; /* header */
+    --police_26: 1.625rem; /* grands textes */
+    --police_20: 1.250rem; /* textes */
+
+    --couleur_texte: #000; 
+    --couleur_texte_inactif: #975b8d;
+} 
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    list-style: none;
+    text-decoration: none;
+
+    /*Textes de bases*/
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    color: var(--couleur_texte);
+
+    scroll-margin-top: 119px; /* compenser le header pour les scroll intra-page avec les id */
+}
+
+
+/* ------ */ /* ------ */ /* ------ */
+/* ------ */ /* Police */ /* ------ */
+/* ------ */ /* ------ */ /* ------ */
+.paytone-one {
+    font-family: "Paytone One", sans-serif;
+    font-weight: 400;
+}
+.league-spartan {
+    font-family: "League Spartan", sans-serif;
+    font-weight: 400;
+}
+.inter {
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+}
+.p-60 {
+    font-size: var(--police_60);
+}
+.p-30 {
+    font-size: var(--police_30);
+}
+.p-26 {
+    font-size: var(--police_26);
+}
+.p-20 {
+    font-size: var(--police_20);
+}
+
+
+/* ------ */ /* ------- */ /* ------ */
+/* ------ */ /* Général */ /* ------ */
+/* ------ */ /* ------- */ /* ------ */
+.w-70 {
+    width: 70%;
+    margin: 0 auto;
+}
+.padding-50y {
+    padding: 50px 0;
+}
+.border-r-15 {
+    border-radius: 15px;
+}
+.underline {
+    width: fit-content;
+    position: relative;
+}
+.underline::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 100%; height: 2px;
+    background-color: var(--couleur_texte);
+}
+b {
+    font-weight: 900;
+}
+
+
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background-color: var(--beige_clair); 
+    overflow-x: hidden;
+}
+
+/* ------ */ /* ------ */ /* ------ */
+/* ------ */ /* HEADER */ /* ------ */
+/* ------ */ /* ------ */ /* ------ */
+
+header {
+    width: 100%; /* Optionnel */
+    height: 120px;
+    background-color: var(--rose_clair);
+    position: fixed;
+    z-index: 1;
+}
+header>article {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header>article>:nth-child(1) {
+    display: flex;
+    flex: 2;
+    gap: 40px;
+}
+header>article>:nth-child(2) { /* Centrer le logo */
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+header>article>:nth-child(3) { /* Coller à droite les icônes */
+    display: flex;
+    justify-content: end;
+    flex: 2;
+    gap: 20px;
+}
+header>article>nav>a {
+    position: relative;
+}
+.hover-header::after {
+    content: "";
+    position: absolute;
+    left: -5%; bottom: -10px;
+    width: 0%; height: 2px;
+    border-radius: 5px;
+    background-color: var(--couleur_texte);
+    transition: width 0.2s ease-in-out;
+}
+.hover-header:hover::after {
+    width: 110%; 
+    border-radius: 5px;
+}
+.header-fictif {
+    display: flex;
+    min-height: 120px;
+    width: 100%;
+}
+
+
+
+/* ------ */ /* ----------- */ /* ------ */
+/* ------ */ /* HERO BANNER */ /* ------ */
+/* ------ */ /* ----------- */ /* ------ */
+.herobanner {
+    display: flex;
+    align-items: center;
+    aspect-ratio: 16/6;
+    min-height: 500px;
+    background-image: url(media/images/background-herobanner.jpeg);
+    background-size: cover;
+}
+.herobanner-content{
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.herobanner-content>p {
+    width: 500px;
+}
+.herobanner-content>a {
+    width: fit-content;
+    padding: 10px 20px;
+    background-color: var(--rose_clair);
+}
+
+
+/* ------ */ /* -------------- */ /* ------ */
+/* ------ */ /* Produits starz */ /* ------ */
+/* ------ */ /* -------------- */ /* ------ */
+.produit-starz-content {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+.produit-starz-content>div { /* info du produit à la une */
+    display: flex;
+    align-items: flex-end;
+    gap: 80px;
+    position: relative;
+    width: fit-content;
+}
+.produit-starz-content>div:nth-child(1) img {
+    position: absolute;
+    right: -50px;
+    top: -20px;
+    z-index: -1;
+}
+.produit-en-avant {
+    padding-bottom: 50px;
+}
+.image-produit-en-avant { /* l'image */
+    width: fit-content;
+    position: relative;
+    background-color: var(--jaune);
+    padding: 25px 15px;
+    border-radius: 15px;
+}
+.image-produit-en-avant>p { /* le prix */
+    width: fit-content;
+    position: absolute;
+    bottom: 0px; right: -20px;
+    transform: rotate(-12deg);
+
+    background-color: var(--rose_clair);
+    padding: 5px 40px;
+    font-weight: 800;
+}
+.texte-produit-en-avant {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.autres-produit {
+    position: absolute;
+    top: 0;
+    right: -30%;
+    display: flex;
+    gap: 20px;
+    border-top: 3px solid var(--couleur_texte);
+}
+.autres-produit>div {
+    position: relative;
+    display: flex;
+    background-color: var(--jaune);
+    padding: 5px;
+    border-radius: 0 0 15px 15px;
+}
+.autres-produit>div>p {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+/* ------ */ /* --------------- */ /* ------ */
+/* ------ */ /* Histoire Confiz */ /* ------ */
+/* ------ */ /* --------------- */ /* ------ */
+.histoire-confiz {
+    background-color: var(--jaune);
+}
+.histoire-confiz-content {
+    display: flex;
+}
+.histoire-texte {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    gap: 50px;
+}
+.histoire-confiz-content>img {
+    display: flex;
+    width: 40%;
+}
+
+
+
+/* ------ */ /* ---------------- */ /* ------ */
+/* ------ */ /* Avantages Confiz */ /* ------ */
+/* ------ */ /* ---------------- */ /* ------ */
+.avantages-confiz {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+.avantages-confiz-slider {
+    display: flex;
+    gap: 40px;
+    animation: scroll 20s linear infinite;
+}
+.avantages-confiz-slider article {
+    min-width: 16.67%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: var(--police_26);
+    gap: 20px;
+}
+.avantages-confiz-slider article i {
+    font-size: 100px;
+}
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-6 * (16.67% + 40px)));
+    }
+}
+
+
+
+
+
+/* ------ */ /* ------------- */ /* ------ */
+/* ------ */ /* Footer Confiz */ /* ------ */
+/* ------ */ /* ------------- */ /* ------ */
+footer {
+    background-color: var(--rose_clair);
+}
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+}
+.footer-content>div {
+    display: flex;
+    flex-direction: column;
+}
+.footer-content h2 {
+    padding: 20px 0;
+    font-weight: 800;
+}
+.footer-content span {
+    display: flex;
+    gap: 10px;
+}
+.footer-content i {
+    font-size: 50px;
+}
+footer>article>div>a { /* lien textes (sans les réseaux) */
+    position: relative;
+    width: fit-content;
+    padding: 3px 0;
+}
+footer>article>div>a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -1px;
+    width: 100%; height: 0px;
+    background-color: var(--couleur_texte);
+}
+footer>article>div>a:hover::after {
+    height: 2px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ------ */ /* ---------------- */ /* ------ */
+/* ------ */ /* Boutiques Confiz */ /* ------ */
+/* ------ */ /* ---------------- */ /* ------ */
+/* ------ */ /* ---------------- */ /* ------ */
+/* ------ */ /* Boutiques Confiz */ /* ------ */
+/* ------ */ /* ---------------- */ /* ------ */
+/* ------ */ /* ---------------- */ /* ------ */
+/* ------ */ /* Boutiques Confiz */ /* ------ */
+/* ------ */ /* ---------------- */ /* ------ */
+.herobanner-boutiques-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.barre-de-recherche {
+    background-color: var(--rose_clair);
+    padding: 4px;
+}
+.carte-boutiques-container {
+    display: flex;
+    gap: 20px;
+}
+.carte-boutique {
+}
+.carte-boutique img {
+    object-fit: cover;
+    object-position: center;
+}
+.boutique-voir-plus {
+    border: none;
+    background-color: var(--rose_clair);
+    padding: 10px;
+}
