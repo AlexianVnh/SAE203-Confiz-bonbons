@@ -1,5 +1,5 @@
 <?php
-    include_once ("db_and_functions.php");
+    include_once ("functions.php");
 ?>
 
 <!DOCTYPE html>
