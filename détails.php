@@ -8,18 +8,31 @@
 <body>
     <main>
         <section class="details-container">
+
+            <?php
+                $confiserie = get_product_by_id($_GET['id_produit']);
+            ?>
+
+
             <img src="media/images/produits/1.png" height="400" alt="Image produit">
+
             <div class="details-description">
+
                 <div class="details-nom-bonbons">
-                    <p>catégorie : </p>
-                    <h1>Nom Bonbons</h1>
-                    <p>Description et détails du produit</p>
+
+                    <p>Catégorie : <?=  $confiserie[0]['type'] ?></p>
+
+                    <h1>Nom Bonbons  <?= $confiserie[0]['nom']  ?></h1>
+                    <p> <?=  $confiserie[0]['description']?> </p>
+
                 </div>
 
                 <div class="details-prix-bonbons">
-                    <h2>Prix</h2> <p>Type de contenant et qualité</p>
+
+                    <h2><?= $confiserie[0]['prix']?>€</h2>
                     <p>TVA incluse</p>
                     <button>Ajouter au panier</button>
+
                 </div>
                 
             </div>

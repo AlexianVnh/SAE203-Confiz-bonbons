@@ -18,7 +18,11 @@
     <section class="carte-boutiques-container w-70 padding-50y">
         <!-- Carte ajouter une boutique -->
         <?php
-            if ($_SESSION['role'] === 'admin') {
+
+            if (isset($_SESSION['role'])) {
+                
+
+                if ($_SESSION['role'] === 'admin') {
         ?>
             <article class="carte-boutique-ajout border-r-15">
                 <h2 class="p-26">Ajouter une boutique</h2>
@@ -48,6 +52,7 @@
             </article>
         <?php
             } /* fermer le if admin */
+        }
         ?>
         
         

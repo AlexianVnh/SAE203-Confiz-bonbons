@@ -113,24 +113,38 @@ function add_shop($nom_boutique, $id_gerant, $numero_rue, $nom_rue, $code_postal
 }
 
 
+function get_product_by_id($id_produit) { 
+    global $PDO;
+
+    $sql = "SELECT * FROM confiseries WHERE id = :id";
+
+    $stmt = $PDO->prepare($sql);
+    $stmt->bindParam(':id', $id_produit);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
 function get_products_and_their_stock($id_boutique) {
     global $PDO;
 
 
         $sql = "SELECT 
-                b.nom_boutique,
+                b.nom,
                 c.id,
                 c.nom,
                 c.prix,
+                c.description,
                 s.quantite
             FROM 
                 utilisateurs u
             JOIN 
-                boutiques b ON u.id = b.id_user
+                boutiques b ON u.id = b.utilisateur_id
             JOIN 
-                stock s ON b.id = s.boutique_id
+                stocks s ON b.id = s.boutique_id
             JOIN 
-                confiseries c ON s.produit_id = c.id
+                confiseries c ON s.confiserie_id = c.id
             WHERE 
                 b.id = :id_boutique";
 

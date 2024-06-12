@@ -38,7 +38,7 @@
 
 
         <?php
-            $confiseries = get_products_and_their_stock($id_confiserie);
+            $confiseries = get_products_and_their_stock($boutique[0]['id']);
             foreach ($confiseries as $confiserie) {
         ?>
 
@@ -51,6 +51,8 @@
                 <p> <?= $confiserie['description'] ?> </p>
 
                 <p id="produits-prix"> <?= $confiserie['prix'] ?> </p>
+
+                <a href="détails.php?id_produit=<?=$confiserie['id']?>">En savoir +</a>
 
             </article>
 
