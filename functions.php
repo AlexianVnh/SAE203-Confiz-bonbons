@@ -63,21 +63,28 @@ function check_login($username, $role, $mot_de_passe) {
 
 function get_id_user_gerant() {
     global $PDO;
-
     $sql = "SELECT id FROM utilisateurs WHERE role = 'gerant' OR role = 'admin'";
-
     $stmt = $PDO->prepare($sql);
     $stmt->execute();
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+
+
 function get_shop() {
     global $PDO;
-
     $sql = "SELECT * FROM boutiques";
-
     $stmt = $PDO->prepare($sql);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC); // Utiliser PDO::FETCH_ASSOC pour obtenir uniquement les clés associatives
+}
+function get_shop_by_id($id) {
+    global $PDO;
+    $sql = "SELECT * FROM boutiques WHERE id = :id";
+    $stmt = $PDO->prepare($sql);
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC); // Utiliser PDO::FETCH_ASSOC pour obtenir uniquement les clés associatives
@@ -106,10 +113,10 @@ function add_shop($nom_boutique, $id_gerant, $numero_rue, $nom_rue, $code_postal
 }
 
 
-function get_products_and_their_stock($id_boutique, $id_utilisateur, $role) {
+function get_products_and_their_stock($id_boutique) {
     global $PDO;
 
-    if ($role == 'gerant') {
+
         $sql = "SELECT 
                 b.nom_boutique,
                 c.id,
@@ -128,14 +135,10 @@ function get_products_and_their_stock($id_boutique, $id_utilisateur, $role) {
                 b.id = :id_boutique";
 
         $stmt = $PDO->prepare($sql);
-        $stmt->bindParam(':id_boutique', $username);
+        $stmt->bindParam(':id_boutique', $id_boutique);
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-    else {
-        echo("pas possible");
-    }
 }
 
 

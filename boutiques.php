@@ -44,8 +44,7 @@
                             unset($_SESSION['ajout_boutique']);
                         }
                     ?>    
-                </form>
-                
+                </form>        
             </article>
         <?php
             } /* fermer le if admin */
@@ -64,7 +63,7 @@
                 echo "Nom : " . $boutique['nom'] . "<br>";
                 echo "Adresse : " . $boutique['numero_rue'] . " " . $boutique['nom_adresse'] . ", " . $boutique['code_postal'] . ", "  . $boutique['ville'] . ", " . $boutique['pays'] . "<br>";
             ?>
-            <a href="<?=CHEMIN_URL_SERVER?>produits.php" class="boutique-voir-plus">Découvrir leurs produits ></a>
+            <a href="<?=CHEMIN_URL_SERVER?>produits.php?id_boutique=<?=$boutique['id']?>" class="boutique-voir-plus">Découvrir leurs produits ></a>
         </article>
         <?php        
                 if ($nombre_boutique >= 8) {

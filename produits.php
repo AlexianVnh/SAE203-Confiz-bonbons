@@ -7,10 +7,19 @@
 
 <body>
     <main>
-        
+        <?php
+            /* récupérer le nom de la boutique et son id */
+            $boutique_id = $_GET['id_boutique'];
+            $boutique = get_shop_by_id($boutique_id);
+
+            /* récupérer ses produits */
+            
+        ?>
+
+
         <nav class="produits-nav w-70 padding-50y">
             <h1>Nos produits</h1>
-            <h2></h2>
+            <h2><?=$boutique[0]['nom']?></h2>
             
             <button>Tous</button>
             <button>Sachet</button>
