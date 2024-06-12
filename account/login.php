@@ -40,7 +40,7 @@ include_once("../header.php");
                     <input type="submit" value="Se connecter" class="submit-button p-20 border-r-15">
                 </form>
 
-                <?php
+                 <?php
                     if (isset($_SESSION['error'])) {
                         echo('<p>' . $_SESSION['error'] . '</p>');
                         $_SESSION['error'] = '';

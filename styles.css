@@ -440,3 +440,64 @@ footer>article>div>a:hover::after {
 .pays {
     width: 100px;
 }
+
+
+/* ------ */ /* ---------------- */ /* ------ */
+/* ------ */ /* Détails produits */ /* ------ */
+/* ------ */ /* ---------------- */ /* ------ */
+/* ------ */ /* ---------------- */ /* ------ */
+/* ------ */ /* Détails produits */ /* ------ */
+/* ------ */ /* ---------------- */ /* ------ */
+/* ------ */ /* ---------------- */ /* ------ */
+/* ------ */ /* Détails produits */ /* ------ */
+/* ------ */ /* ---------------- */ /* ------ */
+
+.produits-nav {
+    display: flex;
+    
+}
+
+.produits-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.produit {
+    background-color: #FFA7F1;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 15px;
+    gap: 15px;
+}
+
+.produits-bar {
+    background-color: #FDD400;
+    height: 20px;
+}
+
+
+
+/* ------ */ /* ---------------- */ /* ------ */
+/* ------ */ /* Détails produits */ /* ------ */
+/* ------ */ /* ---------------- */ /* ------ */
+/* ------ */ /* ---------------- */ /* ------ */
+/* ------ */ /* Détails produits */ /* ------ */
+/* ------ */ /* ---------------- */ /* ------ */
+/* ------ */ /* ---------------- */ /* ------ */
+/* ------ */ /* Détails produits */ /* ------ */
+/* ------ */ /* ---------------- */ /* ------ */
+
+
+.details-container {
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.details-description {
+    display: flex;
+    flex-direction: column;
+}
