@@ -72,6 +72,7 @@ function get_id_user_gerant() {
 
 
 
+
 function get_shop() {
     global $PDO;
     $sql = "SELECT * FROM boutiques";
@@ -129,7 +130,6 @@ function get_product_by_id($id_produit) {
 function get_products_and_their_stock($id_boutique) {
     global $PDO;
 
-
         $sql = "SELECT 
                 b.nom,
                 c.id,
@@ -147,12 +147,11 @@ function get_products_and_their_stock($id_boutique) {
                 confiseries c ON s.confiserie_id = c.id
             WHERE 
                 b.id = :id_boutique";
+    $stmt = $PDO->prepare($sql);
+    $stmt->bindParam(':id_boutique', $id_boutique);
+    $stmt->execute();
 
-        $stmt = $PDO->prepare($sql);
-        $stmt->bindParam(':id_boutique', $id_boutique);
-        $stmt->execute();
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 
