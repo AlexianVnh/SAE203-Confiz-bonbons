@@ -38,7 +38,7 @@
 
 
         <?php
-            $confiseries = get_confiserie();
+            $confiseries = get_products_and_their_stock($id_confiserie);
             foreach ($confiseries as $confiserie) {
         ?>
 
