@@ -43,7 +43,7 @@ include_once("../header.php");
                  <?php
                     if (isset($_SESSION['error'])) {
                         echo('<p>' . $_SESSION['error'] . '</p>');
-                        $_SESSION['error'] = '';
+                        unset($_SESSION['error']);
                     }
                 ?>
             </article>

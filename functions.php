@@ -72,6 +72,7 @@ function get_id_user_gerant() {
 
 
 
+
 function get_shop() {
     global $PDO;
     $sql = "SELECT * FROM boutiques";
@@ -113,32 +114,34 @@ function add_shop($nom_boutique, $id_gerant, $numero_rue, $nom_rue, $code_postal
 }
 
 
+
+
+
 function get_products_and_their_stock($id_boutique) {
     global $PDO;
 
+    $sql = "SELECT 
+            b.nom_boutique,
+            c.id,
+            c.nom,
+            c.prix,
+            s.quantite
+        FROM 
+            utilisateurs u
+        JOIN 
+            boutiques b ON u.id = b.id_user
+        JOIN 
+            stock s ON b.id = s.boutique_id
+        JOIN 
+            confiseries c ON s.produit_id = c.id
+        WHERE 
+            b.id = :id_boutique";
 
-        $sql = "SELECT 
-                b.nom_boutique,
-                c.id,
-                c.nom,
-                c.prix,
-                s.quantite
-            FROM 
-                utilisateurs u
-            JOIN 
-                boutiques b ON u.id = b.id_user
-            JOIN 
-                stock s ON b.id = s.boutique_id
-            JOIN 
-                confiseries c ON s.produit_id = c.id
-            WHERE 
-                b.id = :id_boutique";
+    $stmt = $PDO->prepare($sql);
+    $stmt->bindParam(':id_boutique', $id_boutique);
+    $stmt->execute();
 
-        $stmt = $PDO->prepare($sql);
-        $stmt->bindParam(':id_boutique', $id_boutique);
-        $stmt->execute();
-
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 
