@@ -7,11 +7,11 @@
 
 <body>
     <main>
-        <nav class="produits-nav">
-            <h1>
-                Nos produits
-            </h1>
-            <br>
+        
+        <nav class="produits-nav w-70 padding-50y">
+            <h1>Nos produits</h1>
+            <h2></h2>
+            
             <button>Tous</button>
             <button>Sachet</button>
             <button>Boîtes</button>
@@ -19,7 +19,7 @@
             <button>Carambar</button>
         </nav>
 
-        <section class="produits-container">
+        <section class="produits-container w-70 padding-50y">
 
             <article class="produit">
                 <img src="media/images/produits/1.png" alt="Mini Banan's">
