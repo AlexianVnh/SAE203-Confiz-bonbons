@@ -21,97 +21,41 @@
             <h1>Nos produits</h1>
             <h2><?=$boutique[0]['nom']?></h2>
             
-            <button>Tous</button>
-            <button>Sachet</button>
-            <button>Boîtes</button>
-            <button>Haribo</button>
-            <button>Carambar</button>
+            <div class="produits-nav-boutons">
+                <button>Tous</button>
+                <button>Sachet</button>
+                <button>Boîte</button>
+                <button>Haribo</button>
+                <button>Carambar</button>
+            </div>
         </nav>
 
-        <section class="produits-container w-70 padding-50y">
+
+
+
+
+        <section class="produits-container padding-50y">
+
+
+        <?php
+            $confiseries = get_confiserie();
+            foreach ($confiseries as $confiserie) {
+        ?>
+
 
             <article class="produit">
-                <img src="media/images/produits/1.png" alt="Mini Banan's">
-                <h3>Nom Bonbons</h3>
-                <p>Description du bonbon</p>
-                <p id="produits-prix">Prix</h4>
-            </article>
-            <article class="produit">
-                <img src="media/images/produits/5.png" alt="Mini Banan's">
-                <h3>Nom Bonbons</h3>
-                <p>Description du bonbon</p>
-                <p id="produits-prix">Prix</h4>
-            </article>
-            <article class="produit">
-                <img src="media/images/produits/3.png" alt="Mini Banan's">
-                <h3>Nom Bonbons</h3>
-                <p>Description du bonbon</p>
-                <p id="produits-prix">Prix</h4>
-            </article>
-            <article class="produit">
-                <img src="media/images/produits/4.png" alt="Mini Banan's">
-                <h3>Nom Bonbons</h3>
-                <p>Description du bonbon</p>
-                <p id="produits-prix">Prix</h4>
+                <img src="media/images/produits/<?=$confiserie['id']?>.jpg" alt="Mini Banan's">
+                
+                <h3> <?= $confiserie['nom'] ?> </h3>
+
+                <p> <?= $confiserie['description'] ?> </p>
+
+                <p id="produits-prix"> <?= $confiserie['prix'] ?> </p>
+
             </article>
 
-            <div class="produits-bar">
+                <?php } ?>
 
-            </div>
-
-            <article class="produit">
-                <img src="media/images/produits/1.png" alt="Mini Banan's">
-                <h3>Nom Bonbons</h3>
-                <p>Description du bonbon</p>
-                <p id="produits-prix">Prix</h4>
-            </article>
-            <article class="produit">
-                <img src="media/images/produits/5.png" alt="Mini Banan's">
-                <h3>Nom Bonbons</h3>
-                <p>Description du bonbon</p>
-                <p id="produits-prix">Prix</h4>
-            </article>
-            <article class="produit">
-                <img src="media/images/produits/3.png" alt="Mini Banan's">
-                <h3>Nom Bonbons</h3>
-                <p>Description du bonbon</p>
-                <p id="produits-prix">Prix</h4>
-            </article>
-            <article class="produit">
-                <img src="media/images/produits/4.png" alt="Mini Banan's">
-                <h3>Nom Bonbons</h3>
-                <p>Description du bonbon</p>
-                <p id="produits-prix">Prix</h4>
-            </article>
-
-            <div class="produits-bar">
-
-            </div>
-
-            <article class="produit">
-                <img src="media/images/produits/1.png" alt="Mini Banan's">
-                <h3>Nom Bonbons</h3>
-                <p>Description du bonbon</p>
-                <p id="produits-prix">Prix</h4>
-            </article>
-            <article class="produit">
-                <img src="media/images/produits/5.png" alt="Mini Banan's">
-                <h3>Nom Bonbons</h3>
-                <p>Description du bonbon</p>
-                <p id="produits-prix">Prix</h4>
-            </article>
-            <article class="produit">
-                <img src="media/images/produits/3.png" alt="Mini Banan's">
-                <h3>Nom Bonbons</h3>
-                <p>Description du bonbon</p>
-                <p id="produits-prix">Prix</h4>
-            </article>
-            <article class="produit">
-                <img src="media/images/produits/4.png" alt="Mini Banan's">
-                <h3>Nom Bonbons</h3>
-                <p>Description du bonbon</p>
-                <p id="produits-prix">Prix</h4>
-            </article>
         </section>
 
 

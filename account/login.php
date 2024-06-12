@@ -49,7 +49,7 @@ include_once("../header.php");
             </article>
             
             <article class="welcome-text">
-                <h2 class="paytone-one p-60">Bienvenue hez</h2>
+                <h2 class="paytone-one p-60">Bienvenue chez</h2>
                 <h1 class="paytone-one">Confiz</h1>
             </article>
 

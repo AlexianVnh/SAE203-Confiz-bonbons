@@ -278,6 +278,8 @@ header>article>nav>a {
 /* ------ */ /* ---------------- */ /* ------ */
 /* ------ */ /* Avantages Confiz */ /* ------ */
 /* ------ */ /* ---------------- */ /* ------ */
+
+
 .avantages-confiz {
     display: flex;
     overflow: hidden;
@@ -317,6 +319,8 @@ header>article>nav>a {
 /* ------ */ /* ------------- */ /* ------ */
 /* ------ */ /* Footer Confiz */ /* ------ */
 /* ------ */ /* ------------- */ /* ------ */
+
+
 footer {
     background-color: var(--rose_clair);
 }
@@ -357,14 +361,6 @@ footer>article>div>a:hover::after {
 
 
 
-
-
-
-
-
-
-
-
 /* ------ */ /* ---------------- */ /* ------ */
 /* ------ */ /* Boutiques Confiz */ /* ------ */
 /* ------ */ /* ---------------- */ /* ------ */
@@ -374,6 +370,9 @@ footer>article>div>a:hover::after {
 /* ------ */ /* ---------------- */ /* ------ */
 /* ------ */ /* Boutiques Confiz */ /* ------ */
 /* ------ */ /* ---------------- */ /* ------ */
+
+
+
 .herobanner-boutiques-content {
     display: flex;
     align-items: center;
@@ -444,22 +443,46 @@ footer>article>div>a:hover::after {
     width: 100px;
 }
 
+.ajout-boutique-feedback {
+    padding: 5px !important;
+    background-color: var(--jaune) !important;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #FFA7F1; 
+    border-radius: 15px;
+}
+
 
 /* ------ */ /* ---------------- */ /* ------ */
-/* ------ */ /* Détails produits */ /* ------ */
+/* ------ */ /* Produits Confiz */ /* ------ */
 /* ------ */ /* ---------------- */ /* ------ */
 /* ------ */ /* ---------------- */ /* ------ */
-/* ------ */ /* Détails produits */ /* ------ */
+/* ------ */ /* Produits Confiz */ /* ------ */
 /* ------ */ /* ---------------- */ /* ------ */
 /* ------ */ /* ---------------- */ /* ------ */
-/* ------ */ /* Détails produits */ /* ------ */
+/* ------ */ /* Produits Confiz */ /* ------ */
 /* ------ */ /* ---------------- */ /* ------ */
+
+
 
 .produits-nav {
     display: flex;
-    padding: 20px;
-    gap: 15px;
-    
+    flex-direction: column;
+}
+
+.produits-nav-boutons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    gap: 10px;
+}
+
+.produits-nav-boutons button {
+    border: none;
+    background-color: transparent;
 }
 
 .produits-container {
@@ -467,11 +490,12 @@ footer>article>div>a:hover::after {
     flex-direction: row;
     padding: 30px;
     justify-content: center;
-    justify-content: space-between;
     flex-wrap: wrap;
 }
 
 .produit {
+    display: flex;
+    flex-direction: column;
     background-color: #FFA7F1;
     margin: 20px;
     padding: 10px;
@@ -479,11 +503,27 @@ footer>article>div>a:hover::after {
     gap: 15px;
 }
 
-.produits-bar {
+
+#produits-prix {
+    display: flex;
     background-color: #FDD400;
-    height: 20px;
+    width: 50px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
 }
 
+#produits-prix p {
+    text-align: center;
+}
+
+.produits-bar {
+    width: 100%;
+    height: 30px;
+    background-color: #FFF3B6;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
 
 /* ------ */ /* ---------------- */ /* ------ */
@@ -505,33 +545,46 @@ footer>article>div>a:hover::after {
     margin-bottom: 100px;
 }
 
+.details-container img {
+    background-color: #FDD400;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.details-container h1 {
+    font-size: 2em;
+}
+
+.details-container p {
+    font-size: 0.8em;
+}
+
 .details-description {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
-.ajout-boutique-feedback {
-    padding: 5px !important;
-    background-color: var(--jaune) !important;
+.details-nom-bonbons {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin: 10px;
-    padding: 10px;
-    background-color: #FFA7F1; 
+}
+
+.details-prix-bonbons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.details-description button {
+    background-color: #FFA7F1;
+    border: none;
     border-radius: 15px;
+    height: 40px;
+    width: 230px;
+    font-weight: bold;
 }
 
-#produits-prix {
-    background-color: #FDD400;
-    width: 40px;
-    height: 20px;
-}
 
-.produits-bar {
-    width: 100%;
-    height: 30px;
-    background-color: #FFF3B6;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
+
