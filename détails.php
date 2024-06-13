@@ -14,7 +14,7 @@
             ?>
             <div>
                 <a href="<?=CHEMIN_URL_SERVER?>index.php">Accueil/</a><a href="<?=CHEMIN_URL_SERVER?>produits.php?id_boutique=<?=$boutique[0]['id']?>"><?=$boutique[0]['nom']?>/</a><a href=""><?=$confiserie[0]['nom']?></a>
-                <img src="media/images/produits/1.png" height="400" alt="Image produit">
+                <img src="media/images/produits/<?=$confiserie[0]['illustration']?>" height="400" alt="Image produit">
             </div>
 
             <article class="details-description">
@@ -28,7 +28,10 @@
                 <div class="details-prix-bonbons">
                     <h2 class="p-30"><?=$confiserie[0]['prix']?>€</h2>
                     <p>TVA incluse</p>
-                    <button class="p-26">Ajouter au panier</button>
+                    <form method="post" action="ajouter_panier.php">
+                        <input type="hidden" name="produit_id" value="123">
+                        <button type="submit" class="p-26">Ajouter au panier</button>
+                    </form>
                 </div>
             </article>
         </section>
