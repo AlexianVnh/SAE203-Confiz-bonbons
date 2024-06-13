@@ -61,18 +61,25 @@
                 $compteur = 0;
         ?>
 
-            <article class="produit border-r-15" data-id="<?=$confiserie['type']?>">
-                <img src="media/images/produits/<?=$confiserie['id']?>.png" height="280px" alt="<?=$confiserie['nom']?>" title="<?=$confiserie['nom']?>">
+            <article class="produit border-r-15" data-id="<?=$confiserie['type']?>" >
+                <img src="media/images/produits/<?=$confiserie['id']?>.png" height="280px" width="280" alt="<?=$confiserie['nom']?>" title="<?=$confiserie['nom']?>">
+                <div class="produit-description">
+                    <div class="produit-nom-description">
+                        <h3> <?= $confiserie['nom'] ?> </h3>
+                        <p> <?= $confiserie['description'] ?> </p>
+                    </div>
                 
-                <h3> <?= $confiserie['nom'] ?> </h3>
-                <p> <?= $confiserie['description'] ?> </p>
-                <p id="produits-prix"> <?= $confiserie['prix'] ?> </p>
-
-                <a href="détails.php?id_produit=<?=$confiserie['id']?>&id_boutique=<?=$boutique[0]['id']?>">En savoir +</a>
+                    <div class="produit-prix-panier">
+                        <p id="produit-prix"> <?= $confiserie['prix'] ?> </p>
+                        <a href="détails.php?id_produit=<?=$confiserie['id']?>&id_boutique=<?=$boutique[0]['id']?>">En savoir +</a>
+                    </div>
+                </div>
+                
+                
             </article>
 
         <?php   
-            } /* end foreach */
+            }
         ?>
 
         </section>
