@@ -28,7 +28,8 @@
     <script src="https://kit.fontawesome.com/81e44f4840.js" crossorigin="anonymous"></script>
 
     <!-- liens Javascript -->
-    <script src="<?=CHEMIN_URL_SERVER?>account/login_script.js" defer></script> <!--script JS--> 
+    <script src="<?=CHEMIN_URL_SERVER?>account/login_script.js" defer></script> <!--script login JS--> 
+    <script src="<?=CHEMIN_URL_SERVER?>/app.js" defer></script> <!--script JS--> 
 </head>
 <body>
     <header>

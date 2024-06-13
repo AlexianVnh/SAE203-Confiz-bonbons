@@ -2,13 +2,10 @@
 include_once ("functions.php");
 
 // Récupérer les valeurs du formulaire
-$nom_boutique = $_POST['nom-boutique'];
-$id_gerant = $_POST['id-gerant'];
-$numero_rue = $_POST['numero-rue'];
-$nom_rue = $_POST['nom-rue'];
-$code_postal = $_POST['code-postal'];
-$ville = $_POST['ville'];
-$pays = $_POST['pays'];
+$nom_produit = $_POST['nom-produit'];
+$type_produit = $_POST['type-produit'];
+$prix_produit = $_POST['prix-produit'];
+$description_produit = $_POST['description-produit'];
 
 $gerants = get_id_user_gerant();
 $gerant_ids = array_column($gerants, 'id');

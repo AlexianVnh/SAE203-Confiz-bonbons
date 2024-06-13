@@ -126,6 +126,17 @@ function get_product_by_id($id_produit) {
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+function get_product_type() {
+    global $PDO;
+
+    $sql = "SELECT DISTINCT type FROM confiseries";
+
+    $stmt = $PDO->prepare($sql);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 
 function get_products_and_their_stock($id_boutique) {
     global $PDO;
@@ -135,6 +146,7 @@ function get_products_and_their_stock($id_boutique) {
                 c.id,
                 c.nom,
                 c.prix,
+                c.type,
                 c.description,
                 s.quantite
             FROM 
