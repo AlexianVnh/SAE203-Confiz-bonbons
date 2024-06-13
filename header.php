@@ -42,6 +42,13 @@
                 <img src="<?=CHEMIN_URL_SERVER?>media/images/logo_confiz.png" alt="Logo Confiz" width="auto" height="100">
             </a>
             <nav>
+                <?php
+                if (isset($_SESSION["role"]) && $_SESSION['role'] === 'admin') {
+                ?>    
+                    <a href="admin.php"><i class="fa-solid fa-gear p-30"></i></a>
+                <?php
+                }
+                ?>
                 <a href="">
                     <i class="fa-solid fa-cart-shopping p-30"></i>
                 </a>

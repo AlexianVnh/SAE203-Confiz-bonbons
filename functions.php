@@ -112,6 +112,18 @@ function add_shop($nom_boutique, $id_gerant, $numero_rue, $nom_rue, $code_postal
 
     return true;
 }
+function delete_shop($id_boutique) {
+    global $PDO;
+
+    $sql = "DELETE FROM boutiques WHERE id = :id";
+    
+    $stmt = $PDO->prepare($sql);
+    $stmt->bindParam(':id', $id_boutique);
+    $stmt->execute();
+
+    return true;
+}
+
 
 
 function get_product_by_id($id_produit) { 

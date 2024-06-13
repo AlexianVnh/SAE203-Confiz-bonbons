@@ -16,44 +16,6 @@
     </section>
     
     <section class="carte-boutiques-container w-70 padding-50y">
-        <!-- Carte ajouter une boutique -->
-        <?php
-
-            if (isset($_SESSION['role'])) {
-                if ($_SESSION['role'] === 'admin') {
-        ?>
-            <article class="carte-boutique-ajout border-r-15">
-                <h2 class="p-26">Ajouter une boutique</h2>
-                <form action="ajouter_boutique.php" class="form-ajout-boutique" method="post">
-                    <label for="nom-boutique">Nom de la boutique</label>
-                    <input class="" type="text" id="nom-boutique" name="nom-boutique" placeholder="Ex : Confiz boutique" required>
-                
-                    <label for="id-gerant">Id du gérant</label>
-                    <input class="" type="text" id="id-gerant" name="id-gerant" placeholder="Ex : 2" required>
-
-                    <label for="name">Adresse (n° / nom de la rue / code postal / ville / pays)</label>
-                    <div>
-                        <input class="numero-rue" type="text" id="numero-rue" name="numero-rue" placeholder="123" required>
-                        <input class="nom-rue" type="text" id="nom-rue" name="nom-rue" placeholder="RUE du chemin vert" required>
-                        <input class="code-postal" type="text" id="code-postal" name="code-postal" placeholder="22300" required>
-                        <input class="ville" type="text" id="ville" name="ville" placeholder="Lannion" required>
-                        <input class="pays" type="text" id="pays" name="pays" placeholder="France" required>
-                        <input class="" type="submit" value="Ajouter" required>              
-                    </div>           
-                    <?php
-                        if (isset($_SESSION['ajout_boutique'])) {
-                            echo '<p class="ajout-boutique-feedback">' . $_SESSION['ajout_boutique'] . "</p>";
-                            unset($_SESSION['ajout_boutique']);
-                        }
-                    ?>    
-                </form>        
-            </article>
-        <?php
-            } /* fermer le if admin */
-        }
-        ?>
-        
-        
         <!-- Afficher toutes les boutiques -->
         <?php
             $shop = get_shop();
@@ -75,17 +37,9 @@
                 }
             }
         ?>
-        
-        
-        
-
     </section>
-    
-
 </body>
 </html>
-
-
 
 
 <?php

@@ -4,6 +4,7 @@
     --jaune: #FDD400; /* background sections, images */
     --beige: #FFF3B6; /* background séparations */
     --beige_clair: #FFF9EB; /* background body */
+    --gris-admin: #dfdfdf; /* background admin */
 
     --police_60: 3.750rem; /* titres */
     --police_50: 3.125rem; /* sous-titres */
@@ -140,6 +141,10 @@ header>article>:nth-child(3) { /* Coller à droite les icônes */
 }
 header>article>nav>a {
     position: relative;
+    transition: transform 0,2s ease-in-out;
+}
+header>article>nav>a:hover {
+    transform: translateY(-2px);
 }
 .hover-header::after {
     content: "";
@@ -418,52 +423,6 @@ footer>article>div>a:hover::after {
 }
 
 
-.carte-boutique-ajout { /* container d'ajout de boutique */
-    display: flex;
-    flex-direction: column;
-    gap: 40px; 
-    width: 300px;
-    background-color: var(--rose_clair);
-    padding: 15px;
-}
-.form-ajout-boutique {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-.form-ajout-boutique input {
-    padding: 5px;
-    margin: 3px 0;
-}
-.numero-rue {
-    width: 40px;
-}
-.nom-rue {
-    width: 200px;
-}
-.code-postal {
-    width: 60px;
-}
-.ville {
-    width: 200px;
-}
-.pays {
-    width: 100px;
-}
-
-.ajout-boutique-feedback {
-    padding: 5px !important;
-    background-color: var(--jaune) !important;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin: 10px;
-    padding: 10px;
-    background-color: #FFA7F1; 
-    border-radius: 15px;
-}
-
-
 /* ------ */ /* ---------------- */ /* ------ */
 /* ------ */ /* Produits Confiz */ /* ------ */
 /* ------ */ /* ---------------- */ /* ------ */
@@ -591,3 +550,58 @@ footer>article>div>a:hover::after {
 
 
 
+
+
+/* ------ */ /* ---------- */ /* ------ */
+/* ------ */ /* Page admin */ /* ------ */
+/* ------ */ /* ---------- */ /* ------ */
+/* ------ */ /* ---------- */ /* ------ */
+/* ------ */ /* Page admin */ /* ------ */
+/* ------ */ /* ---------- */ /* ------ */
+/* ------ */ /* ---------- */ /* ------ */
+/* ------ */ /* Page admin */ /* ------ */
+/* ------ */ /* ---------- */ /* ------ */
+
+.admin-boutiques-container {
+    display: flex;
+    gap: 20px;
+}
+.carte-boutique-ajout { /* container d'ajout de boutique */
+    display: flex;
+    flex-direction: column;
+    gap: 40px; 
+    width: 310px;
+    background-color: var(--gris-admin);
+    padding: 15px;
+}
+.form-ajout-boutique {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.form-ajout-boutique input {
+    padding: 5px;
+    margin: 3px 0;
+}
+.numero-rue {
+    width: 40px;
+}
+.nom-rue {
+    width: 235px;
+}
+.code-postal {
+    width: 60px;
+}
+.ville {
+    width: 215px;
+}
+.pays {
+    width: 100px;
+}
+
+.ajout-boutique-feedback {
+    width: 100%;
+    padding: 10px !important;
+    background-color: var(--jaune) !important;
+    margin-top: 10px;
+}

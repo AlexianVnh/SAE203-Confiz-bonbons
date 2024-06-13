@@ -19,13 +19,13 @@ if (in_array($id_gerant, $gerant_ids)) {
                      $nom_rue, $code_postal, $ville, $pays);
 
     if ($resultat == true){
-        header("Location:" . CHEMIN_URL_SERVER . "boutiques.php");
+        header("Location:" . CHEMIN_URL_SERVER . "admin.php");
         $_SESSION['ajout_boutique'] = "Boutique " . $nom_boutique . " ajoutée avec succès !";
         exit();
     }
 }
 else {
-    header("Location:" . CHEMIN_URL_SERVER . "boutiques.php");
+    header("Location:" . CHEMIN_URL_SERVER . "admin.php");
     $_SESSION['ajout_boutique'] = "L'utilisateur n'est pas gérant";
     exit();
 }
