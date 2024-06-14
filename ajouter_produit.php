@@ -5,25 +5,20 @@ include_once ("functions.php");
 $nom_produit = $_POST['nom-produit'];
 $type_produit = $_POST['type-produit'];
 $prix_produit = $_POST['prix-produit'];
+$illustration_produit = $_POST['illustration-produit'];
 $description_produit = $_POST['description-produit'];
 
-$gerants = get_id_user_gerant();
-$gerant_ids = array_column($gerants, 'id');
 
-// Vérifier si le shop peut être créé avec le propriétaire
-if (in_array($id_gerant, $gerant_ids)) {
-    $resultat = add_shop($nom_boutique, $id_gerant, $numero_rue,
-                     $nom_rue, $code_postal, $ville, $pays);
 
-    if ($resultat == true){
-        header("Location:" . CHEMIN_URL_SERVER . "boutiques.php");
-        $_SESSION['ajout_boutique'] = "Boutique " . $nom_boutique . " ajoutée avec succès !";
-        exit();
-    }
+$resultat = add_product($nom_produit, $type_produit, $prix_produit,
+                $illustration_produit, $description_produit);
+
+if ($resultat == true){
+    $_SESSION['ajout_produit'] = "Produit : " . $nom_produit . " ajoutée avec succès !";
 }
 else {
-    header("Location:" . CHEMIN_URL_SERVER . "boutiques.php");
-    $_SESSION['ajout_boutique'] = "L'utilisateur n'est pas gérant";
-    exit();
+    $_SESSION['ajout_produit'] = "Erreur lors de la suppression de la confiserie.";
 }
+header("Location:" . CHEMIN_URL_SERVER . "boutiques.php");
+exit();
 ?>

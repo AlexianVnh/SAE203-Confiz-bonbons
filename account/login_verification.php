@@ -15,6 +15,7 @@ if ($resultat == true){
     $_SESSION['username'] = $username;
     $_SESSION['role'] = $role;
     $_SESSION['loggedin'] = true;
+    $_SESSION['id_user'] = get_id_user_gerant($_SESSION['username']);
     header("Location:" . CHEMIN_URL_SERVER . "index.php");
     exit();
 }

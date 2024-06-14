@@ -11,7 +11,6 @@ include_once("../header.php");
         </span>
         <section class="login-container">
             <article class="login-form-container">
-                <a href="<?=CHEMIN_URL_SERVER?>index.php">< Retour à l'accueil</a>
                 <nav>
                     <button class="register-button button-inactive p-20">Inscription</button>
                     <span class="nav-separation"></span>
@@ -23,6 +22,35 @@ include_once("../header.php");
                         <input class="input-name login-input" type="text" id="name" name="name" required>
                         <label for="name">username</label>
                     </div>
+
+                    <div class="row inscription-only">
+                        <div class="inscription-only">
+                            <i class="fa-regular fa-user"></i>                        
+                            <input class="input-name login-input" type="text" id="prenom" name="prenom">
+                            <label for="prenom">prénom</label>
+                        </div>
+                        <div class="inscription-only">
+                            <i class="fa-regular fa-user"></i>                        
+                            <input class="input-name login-input" type="text" id="nom" name="nom">
+                            <label for="nom">nom</label>
+                        </div>
+                    </div>
+                    <div class="row inscription-only">
+                        <div class="inscription-only">
+                            <i class="fa-regular fa-user"></i>                        
+                            <input class="input-name login-input" type="text" id="email" name="email">
+                            <label for="email">email</label>
+                        </div>
+                        <p>@example.com</p>
+                    </div>
+                    <div class="inscription-only">
+                        <i class="fa-regular fa-user"></i>                        
+                        <input class="input-name login-input" type="date" id="ddn" name="ddn">
+                        <label for="ddn">date de naissance</label>
+                    </div>
+                    
+                    
+                    
                     <div>
                         <i class="fa-regular fa-user"></i>                        
                         <select name="role" id="role">

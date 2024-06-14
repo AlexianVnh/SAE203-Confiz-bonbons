@@ -4,12 +4,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const loginButton = document.querySelector('.login-button');
     const form = document.querySelector('form');
     const submitButton = document.querySelector('.submit-button');
+    const inscriptionsOnly = document.querySelectorAll('.inscription-only');
 
     registerButton.addEventListener('click', function () {
         registerButton.classList.replace('button-inactive', 'button-active');
         loginButton.classList.replace('button-active', 'button-inactive');
         form.setAttribute('action', 'register_verification.php');
         submitButton.setAttribute('value', "S'inscrire");
+        inscriptionsOnly.forEach(element => {
+            element.style.cssText = 'display: flex !important;';
+        });
     });
 
     loginButton.addEventListener('click', function () {
@@ -17,6 +21,9 @@ document.addEventListener('DOMContentLoaded', function () {
         registerButton.classList.replace('button-active', 'button-inactive');
         form.setAttribute('action', 'login_verification.php');
         submitButton.setAttribute('value', "Se connecter");
+        inscriptionsOnly.forEach(element => {
+            element.style.cssText = 'display: none !important;';
+        });
     });
 });
 

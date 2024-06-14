@@ -1,5 +1,12 @@
 <?php
     include_once ("functions.php");
+    if (isset($_POST['logout'])) {
+        session_unset();
+        session_destroy();
+    
+        header("Location: " . CHEMIN_URL_SERVER . "index.php");
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -52,11 +59,18 @@
                 <a href="">
                     <i class="fa-solid fa-cart-shopping p-30"></i>
                 </a>
-                <a href="<?=CHEMIN_URL_SERVER?>account/login.php" style="display: flex; align-items: end; gap: 10px;">
-                    <i class="fa-regular fa-user p-30"></i>
+                <a href="<?=CHEMIN_URL_SERVER?>account/login.php" style="display: flex; align-items: center; gap: 10px;">
                     <?php
+                    if (!isset($_SESSION["username"])) {
+                    ?>
+                        <i class="fa-regular fa-user p-30"></i>
+                    <?php
+                    }
                     if (isset($_SESSION["username"])) {
-                    ?>    
+                    ?>   
+                        <form method="post" style="display: inline;">
+                            <button type="submit" name="logout" class="header-logout-button"><i class="fa-solid fa-right-from-bracket p-30"></i></button>
+                        </form>
                         <p class="p-26 league-spartan"><?=$_SESSION["username"]?></p>
                     <?php
                     }
