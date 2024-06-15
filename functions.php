@@ -194,6 +194,21 @@ function add_product($nom_produit, $type_produit, $prix_produit, $illustration_p
     return true;
 }
 
+function add_product_to_shop($id_produit, $id_boutique, $quantite) {
+    global $PDO;
+
+    $sql = "INSERT INTO stocks (quantite, confiserie_id, boutique_id)
+    VALUES (:quantite, :id_produit, :id_boutique)";
+
+    $stmt = $PDO->prepare($sql);
+    $stmt->bindParam(':id_produit', $id_produit);
+    $stmt->bindParam(':id_boutique', $id_boutique);
+    $stmt->bindParam(':quantite', $quantite);
+    $stmt->execute();
+
+    return true;
+}
+
 function delete_product($id_produit) {
     global $PDO;
 
@@ -284,9 +299,9 @@ function update_product_qty($quantite_finale, $id_produit) {
     $stmt->bindParam(':id_produit', $id_produit);
 
     if ($stmt->execute()) {
-        $_SESSION['feedback_quantite'] = "La quantité du produit a été mise à jour avec succès.";
+        $_SESSION['feedback_quantite'] = "Quantité mise à jour";
     } else {
-        $_SESSION['feedback_quantite'] = "Erreur lors de la mise à jour de la quantité du produit : " . $errorInfo[2];
+        $_SESSION['feedback_quantite'] = "Erreur";
     }
 }
 ?>

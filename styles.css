@@ -535,7 +535,9 @@ footer>article>div>a:hover::after {
     gap: 5px;
 }
 .produit-quantite {
+    text-align: center;
     padding: 10px;
+    width: 50px;
     background-color: var(--gris-admin);
     border: 1px solid #000;
 }
@@ -565,6 +567,14 @@ footer>article>div>a:hover::after {
     padding: 5px 10px;
     background-color: #51bb65;
     border: 1px solid #000;
+}
+
+
+.produit-ajout {
+    gap: 20px;
+}
+.produit-ajout>select {
+    padding: 5px;
 }
 /* ------ */ /* ---------------- */ /* ------ */
 /* ------ */ /* Détails produits */ /* ------ */
@@ -634,19 +644,19 @@ footer>article>div>a:hover::after {
 /* ------ */ /* Page admin */ /* ------ */
 /* ------ */ /* ---------- */ /* ------ */
 
-.admin-boutiques-container {
+.admin-modif-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 20px;
 }
-.carte-boutique-ajout { /* container d'ajout de boutique */
+.carte-admin-modif { /* container d'ajout de boutique */
     display: flex;
     flex-direction: column;
     gap: 40px; 
     max-width: 310px;
     min-width: 310px;
-    background-color: var(--gris-admin);
+    background-color: var(--rose_clair);
     padding: 15px;
 }
 .form-ajout-boutique {
@@ -673,7 +683,13 @@ footer>article>div>a:hover::after {
 .pays {
     width: 100px;
 }
-
+.admin-submit-buttons {
+    background-color: var(--jaune);
+    border: 1px solid #000;
+}
+.admin-submit-buttons:hover {
+    background-color: #e4be02;
+}
 .ajout-boutique-feedback {
     width: 100%;
     padding: 10px !important;

@@ -46,7 +46,7 @@ include_once("../header.php");
                     <div class="inscription-only">
                         <i class="fa-regular fa-user"></i>                        
                         <input class="input-name login-input" type="date" id="ddn" name="ddn">
-                        <label for="ddn">date de naissance</label>
+                        <label class="login-ddn" for="ddn">date de naissance</label>
                     </div>
                     
                     

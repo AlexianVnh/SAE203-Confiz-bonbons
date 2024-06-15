@@ -27,13 +27,42 @@ include_once("header.php");
 
         <section class="produits-container w-70 padding-50y">
             <?php
-            $toutes_les_confiseries = get_all_products();
-            
-
             $confiseries = get_products_and_their_stock($boutique[0]['id']);
             $feedback_messages = []; // tableau de feedback
 
-            $test_merge = array_merge($toutes_les_confiseries, $confiseries);
+            /* pour debugger et bien verifier que c'est des entiers comparables */
+            $session_id_user = (int) $_SESSION['id_user'];
+            $boutique_utilisateur_id = (int) $boutique[0]['utilisateur_id'];
+
+            if (isset($_SESSION['id_user'])):
+            ?>
+                <form class="produit produit-ajout" action="ajouter_produit_a_boutique.php" method="post">
+                    <h3 class="paytone-one p-20">Ajoutez un produit à votre boutique</h3>
+                    <p>Retrouvez ci-dessous le catalogue global</p>
+                
+                    <label for="id-produit">Liste des produits</label>
+                    <select class="" type="text" id="id-produit" name="id-produit" required>
+                    <?php
+                        $products = get_all_products(); 
+                        foreach ($products as $product) {
+                    ?>
+                        <option value="<?=$product['id']?>"><?=$product['nom']?></option>
+                    <?php
+                        } /* fin foreach */
+                    ?>
+                    </select>
+
+                    <input type="hidden" name="id-boutique" value="<?=$boutique[0]['id']?>">
+
+                    <label for="quantite-produit">Quantité du produit</label>
+                    <input class="" type="text" id="quantite-produit" name="quantite-produit" placeholder="Ex : 30" pattern="[0-9]" title="Seulements les chiffres sont acceptées" required>
+                
+                    <input type="submit" value="Ajouter à la boutique">
+                </form>
+
+                
+            <?php
+            endif;
 
             foreach ($confiseries as $confiserie) {
                 // Initialiser la quantité du produit dans la session si non déjà fait
@@ -61,8 +90,8 @@ include_once("header.php");
 
                     <form class="produit-description" method="post">
                         <div class="produit-nom-description">
-                            <h3 class="p-20"><?= $confiserie['nom'] ?></h3>
-                            <p><?= $confiserie['description'] ?></p>
+                            <h3 class="p-20"><?= $confiserie['nom']?></h3>
+                            <p><?=$confiserie['description']?></p>
                         </div>
 
                         <div class="produit-prix-panier">
@@ -70,35 +99,36 @@ include_once("header.php");
                         </div>
 
                         <?php
-                        /* pour debugger et bien verifier que c'est des entiers comparables */
-                        $session_id_user = (int) $_SESSION['id_user'];
-                        $boutique_utilisateur_id = (int) $boutique[0]['utilisateur_id'];
+                        if (isset($_SESSION['id_user'])):
+                        
+                            if ($session_id_user == $boutique_utilisateur_id) {
+                            ?>        
+                                <input type="hidden" name="id_produit" value="<?=$confiserie['id']?>">
+                                <div class="admin-quantite">
+                                    <p class="produit-quantite"><?= $_SESSION['quantite_' . $confiserie['id']] ?></p>
 
-                        if ($session_id_user == $boutique_utilisateur_id) {
-                        ?>        
-                            <input type="hidden" name="id_produit" value="<?=$confiserie['id']?>">
-                            <div class="admin-quantite">
-                                <p class="produit-quantite"><?= $_SESSION['quantite_' . $confiserie['id']] ?></p>
+                                    <div class="produit-quantite-boutons">
+                                        <button class="ajouter-quantite" type="submit" name="action" value="incrementer">+</button>
+                                        <button class="supprimer-quantite" type="submit" name="action" value="decrementer">-</button>
+                                    </div>
 
-                                <div class="produit-quantite-boutons">
-                                    <button class="ajouter-quantite" type="submit" name="action" value="incrementer">+</button>
-                                    <button class="supprimer-quantite" type="submit" name="action" value="decrementer">-</button>
+                                    <button class="validation-quantite" type="submit" name="valider">Valider</button>
+
+                                    <!-- afficher le feedback s'il y en a -->
+                                    <?php 
+                                    if (isset($feedback_messages[$confiserie['id']])) {
+                                    ?>
+                                        <p class="feedback-message"><?= $feedback_messages[$confiserie['id']] ?></p>
+                                    <?php 
+                                    }
+                                    ?>
                                 </div>
-
-                                <button class="validation-quantite" type="submit" name="valider">Valider</button>
-
-                                <!-- afficher le feedback s'il y en a -->
-                                <?php 
-                                if (isset($feedback_messages[$confiserie['id']])) {
-                                ?>
-                                    <p class="feedback-message"><?= $feedback_messages[$confiserie['id']] ?></p>
-                                <?php 
-                                }
-                                ?>
-                            </div>
-                        <?php
-                        }
+                            <?php
+                            }
+                        endif;
                         ?>
+                        
+                        
                     </form>
                 </article>
                 <?php
