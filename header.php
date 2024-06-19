@@ -1,14 +1,16 @@
 <?php
     include_once ("functions.php");
+
     if (isset($_POST['logout'])) {
+        echo "<script>localStorage.removeItem('panier');</script>";
+        
         session_unset();
         session_destroy();
-    
-        header("Location: " . CHEMIN_URL_SERVER . "index.php");
+
+        header("Location: " . CHEMIN_URL_SERVER . "account/login.php");
         exit();
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -37,6 +39,7 @@
     <!-- liens Javascript -->
     <script src="<?=CHEMIN_URL_SERVER?>account/login_script.js" defer></script> <!--script login JS--> 
     <script src="<?=CHEMIN_URL_SERVER?>app.js" defer></script> <!--script JS--> 
+
 </head>
 <body>
     <header>
@@ -56,17 +59,17 @@
                 <?php
                 }
                 ?>
-                <a href="">
+                <button id="panier-toggle" >
                     <i class="fa-solid fa-cart-shopping p-30"></i>
-                </a>
+                </button>
+                
                 <a href="<?=CHEMIN_URL_SERVER?>account/login.php" style="display: flex; align-items: center; gap: 10px;">
                     <?php
                     if (!isset($_SESSION["username"])) {
                     ?>
                         <i class="fa-regular fa-user p-30"></i>
                     <?php
-                    }
-                    if (isset($_SESSION["username"])) {
+                    } else {
                     ?>   
                         <form method="post" style="display: inline;">
                             <button type="submit" name="logout" class="header-logout-button"><i class="fa-solid fa-right-from-bracket p-30"></i></button>
@@ -80,5 +83,35 @@
         </article>
     </header>
     <span class="header-fictif"></span>
+
+    <!-- Panier javascript -->
+    <aside id="panier" class="panier">
+        <div class="header-panier">
+            <p class="p-20">Votre panier :</p>
+            <i class="panier-cross fa-solid fa-xmark p-30 "></i>
+        </div>   
+        
+        <div class="articles-panier">
+            <!-- Rempli en javascript -->
+        </div>
+
+        <div class="total-panier p-20">
+            <!-- Rempli en javascript -->
+        </div>
+    </aside>
 </body>
+
+<!-- Pas dans un fichier à part pour éviter les problèmes -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const logoutButton = document.querySelector('.header-logout-button');
+
+        if (logoutButton) {
+            logoutButton.addEventListener('click', function() {
+                // Vider le panier du localStorage
+                localStorage.removeItem('panier');
+            });
+        }
+    });
+</script>
 </html>

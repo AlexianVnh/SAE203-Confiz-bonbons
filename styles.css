@@ -170,6 +170,86 @@ header>article>nav>a:hover>i, .header-logout-button:hover{
 }
 
 
+
+/* Panier */
+.panier {
+    position: fixed;
+    top: 0;
+    right: -500px; 
+    width: 300px; 
+    height: 100%;
+    background-color: var(--beige_clair);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.panier.open {
+    right: 0; 
+}
+/* Top du panier */
+.header-panier {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 40px;
+}
+#panier-toggle {
+    border: none;
+    background-color: transparent;
+}
+.header-panier i {
+    cursor: pointer;
+}
+.header-panier i:hover {
+    animation: rotate 0.4s ease-in-out;
+}
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+.articles-panier {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.panier-item {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    background-color: var(--jaune);
+    padding: 10px;
+    border-radius: 5px;
+}
+.remove-from-cart {
+    width: 100%;
+    background-color: var(--rose_clair);
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 3px;
+    border: none;
+    transition: all 0.1s ease-in-out;
+}
+.remove-from-cart:hover {
+    background-color: #ff92ed;
+}
+
+.total-panier {
+    margin-top: 20px;
+    text-align: center;
+    background-color: var(--jaune);
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 800;
+}
 /* ------ */ /* ----------- */ /* ------ */
 /* ------ */ /* HERO BANNER */ /* ------ */
 /* ------ */ /* ----------- */ /* ------ */
@@ -205,7 +285,7 @@ header>article>nav>a:hover>i, .header-logout-button:hover{
     flex-direction: column;
     gap: 50px;
 }
-.produit-starz-content>div { /* info du produit à la une */
+.produit-starz-content>div:nth-child(1) { /* info du produit à la une */
     display: flex;
     align-items: flex-end;
     gap: 80px;
@@ -219,6 +299,10 @@ header>article>nav>a:hover>i, .header-logout-button:hover{
     z-index: -1;
 }
 .produit-en-avant {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    gap: 70px;
     padding-bottom: 50px;
 }
 .image-produit-en-avant { /* l'image */
@@ -249,22 +333,48 @@ header>article>nav>a:hover>i, .header-logout-button:hover{
     top: 0;
     right: -30%;
     display: flex;
+    flex-direction: column;
     gap: 20px;
     border-top: 3px solid var(--couleur_texte);
 }
 .autres-produit>div {
+    display: flex;
+    gap: 10px;
+}
+.autres-produit img {
     position: relative;
     display: flex;
     background-color: var(--jaune);
     padding: 5px;
     border-radius: 0 0 15px 15px;
 }
-.autres-produit>div>p {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-}
 
+
+.fleches-cercle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+.fleches-cercle:hover {
+    background-color: #f0e3c8;
+}
+.fleches-carre {
+    height: 15px;
+    width: 15px;
+    border-top: 2px solid #000;
+    border-left: 2px solid #000;
+}
+.fleche1 {
+    transform: translateX(3px) rotate(-45deg);
+}
+.fleche2 {
+    transform: translateX(-3px) rotate(135deg);
+}
 /* ------ */ /* --------------- */ /* ------ */
 /* ------ */ /* Histoire Confiz */ /* ------ */
 /* ------ */ /* --------------- */ /* ------ */
@@ -469,57 +579,67 @@ footer>article>div>a:hover::after {
     width: 100%; height: 3px;
     background-color: var(--rose_fonce);
 }
+
+
+
+
 .produit-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 30px;
 }
+/* Carte d'un article */
 .produit {
     min-width: 300px;
     max-width: 300px;
-    height: 480px;
 
     position: relative;
     display: flex;
     flex-direction: column;
     background-color: #FFA7F1;
-    padding: 10px;
+    padding: 30px 10px 10px 10px;
     margin-bottom: 20px;
     gap: 10px;
     border-radius: 10px;
 }
-.produit-description {
-    height: 100%;
+.produit-epuise {
+    background-color: #f8d7da;
+}
+.produit-epuise * {
+    color: #cba1a1;
+}
+.produit-epuise .produit-prix, .produit-epuise .produit-savoir-plus {
+    background-color: #caaaad;
+    color: #721c24;
+}
+.produit-epuise .feedback-message {
+    color: #721c24;
+}
+.message-epuise {
+    color: #721c24;
+    background-color: #caaaad;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+
+
+/* Image et bouton d'un article */
+.produit-image-bouton {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
 }
-.produit-nom-description {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-.produit-nom-description h3 {
-    padding-top: 8px;
-    border-top: 2px solid var(--couleur_texte);
-    font-weight: 700;
-}
-.produit-prix {
-    width: fit-content;
-    display: flex;
-    background-color: var(--jaune);
-    padding: 5px 10px;
-    font-weight: 800;
-}
-.produit-savoir-plus {
+.produit-savoir-plus { /* Bouton en voir + */
     position: absolute;
     top: 280px;
-    left: 80px; 
     transform: translateY(0%);
     padding: 5px 15px;
+    box-shadow: 0px 0px 5px #000;
+    border-radius: 5px;
     background-color: var(--jaune);
-    border-bottom: 2px solid var(--couleur_texte);
     opacity: 0;
     transition: all 0.5s ease;
 }
@@ -530,51 +650,83 @@ footer>article>div>a:hover::after {
 
 
 
+
+.produit-description {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    border-top: 2px solid #a45697;
+}
+.produit-nom-description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.produit-nom-description h3 {
+    padding-top: 8px;
+    font-weight: 700;
+}
+.produit-prix {
+    width: fit-content;
+    display: flex;
+    background-color: var(--jaune);
+    padding: 5px 10px;
+    font-weight: 800;
+    border-radius: 5px;
+}
+
+
+
+/* Styles du côté admin */
 .admin-quantite {
     display: flex;
     gap: 5px;
 }
+.admin-quantite>*, .admin-quantite>div>button {
+    border-radius: 5px;
+}
 .produit-quantite {
     text-align: center;
     padding: 10px;
-    width: 50px;
-    background-color: var(--gris-admin);
-    border: 1px solid #000;
+    width: 60px;
+    background-color: #fff;
+    border: none;
 }
-.produit-quantite-boutons {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.produit-quantite-boutons button {
-    width: 30px;
-    border: 1px solid #000;
-    padding: 2px;
-    background-color: var(--gris-admin);
-}
-.produit-quantite-boutons button:hover {
-    background-color: #bcbcbc;
-}
+
 .validation-quantite {
     padding: 0 10px;
-    border: 1px solid #000;
-    background-color: var(--gris-admin);
+    background-color: #fff;
+    border: none;
 }
 .validation-quantite:hover {
-    background-color: #bcbcbc;
+    background-color: #e7e7e7;
 }
 .feedback-message {
     padding: 5px 10px;
     background-color: #51bb65;
-    border: 1px solid #000;
+    border-radius: 5px;
 }
 
 
 .produit-ajout {
-    gap: 20px;
+    gap: 10px;
+    padding: 30px 20px 20px 20px;
 }
 .produit-ajout>select {
-    padding: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+.produit-ajout input {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ffffff;
+}
+.produit input:hover {
+    background-color: #e7e7e7;
 }
 /* ------ */ /* ---------------- */ /* ------ */
 /* ------ */ /* Détails produits */ /* ------ */
@@ -630,8 +782,19 @@ footer>article>div>a:hover::after {
     top: -30px;
     left: 0;
 }
-
-
+.detail_chemin a {
+    position: relative;
+}
+.detail_chemin a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: -1px;
+    height: 1px; width: 0%;
+    background-color: #000;
+}
+.detail_chemin a:hover::after {
+    width: 100%;
+}
 
 
 /* ------ */ /* ---------- */ /* ------ */
@@ -701,3 +864,4 @@ footer>article>div>a:hover::after {
     min-width: 100%;
     max-width: 100%;
 }
+

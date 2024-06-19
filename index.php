@@ -12,6 +12,13 @@ include_once("header.php");
         </article>
     </section>
 
+
+    <?php
+        /* Récupération de tous les produits pour le caroussel */
+        $confiseries = get_product();          
+    ?>
+
+
     <section class="produit-starz" id="produits-starz">
         <article class="produit-starz-content w-70 padding-50y">
             <div>
@@ -21,25 +28,26 @@ include_once("header.php");
             </div>
             <div class="produit-en-avant">
                 <div class="image-produit-en-avant">
-                    <img src="media/images/produits/1.png" width="500" height="500" alt="">
-                    <p class="p-30">3€40</p>
+                    <img id="main-product-img" src="media/images/produits/<?= $confiseries[0]['illustration'] ?>" width="500" height="500" alt="">
+                    <p class="p-30" id="main-product-price"><?= $confiseries[0]['prix'] ?> €</p>
                 </div>
                 <div class="texte-produit-en-avant">
-                    <h1 class="paytone-one p-60">Haribo Banan's</h1>
-                    <a href="" class="p-26 underline">Découvrez ce produit star</a>
+                    <h1 class="paytone-one p-60" id="main-product-name"><?= $confiseries[0]['nom'] ?></h1>
+                    <a href="<?= CHEMIN_URL_SERVER ?>boutiques.php" class="p-26 underline">Découvrez ce produit star</a>
                 </div>
+
                 <div class="autres-produit">
-                    <div>
-                        <img src="media/images/produits/3.png" width="150" height="150" alt="">
-                        <p class="p-26">Haribo oeufs</p>
-                    </div>
-                    <div>
-                        <img src="media/images/produits/4.png" width="150" height="150" alt="">
-                        <p class="p-26">Haribo Coca</p>
-                    </div>
-                    <div>
-                        <img src="media/images/produits/5.png" width="150" height="150" alt="">
-                        <p class="p-26">Haribo Croco</p>
+                    <div id="product-previews">
+                        <?php for ($i = 1; $i <= 3; $i++) : ?>
+                            <a href="">
+                                <img src="media/images/produits/<?= $confiseries[$i]['illustration'] ?>" width="150" height="150" alt="">
+                            </a>
+                        <?php endfor; ?>
+                    </div>    
+
+                    <div class="fleches-caroussel">
+                        <a class="fleches-cercle" id="prev-btn"><span class="fleches-carre fleche1"></span></a>
+                        <a class="fleches-cercle" id="next-btn"><span class="fleches-carre fleche2"></span></a>
                     </div>
                 </div>
             </div>
@@ -118,6 +126,58 @@ include_once("header.php");
     </section>
 </body>
 </html>
+
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const confiseries = <?php echo json_encode($confiseries); ?>;
+            
+            const mainProductImg = document.getElementById('main-product-img');
+            const mainProductPrice = document.getElementById('main-product-price');
+            const mainProductName = document.getElementById('main-product-name');
+            const productPreviews = document.querySelectorAll('#product-previews a img');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            const productsCount = confiseries.length; // Nombre de produits
+            let currentIndex = 0;
+
+            function updateMainProduct(index) {
+                mainProductImg.src = `media/images/produits/${confiseries[index]['id']}.png`;
+                mainProductPrice.innerText = `${confiseries[index]['prix']} €`;
+                mainProductName.innerText = confiseries[index]['nom'];
+            }
+
+            function updatePreviews() {
+                const previewIndices = [1, 2, 3].map(i => (currentIndex + i) % productsCount);
+                productPreviews.forEach((preview, i) => {
+                    preview.src = `media/images/produits/${confiseries[previewIndices[i]]['id']}.png`;
+                });
+            }
+
+            function nextProduct() {
+                currentIndex = (currentIndex + 1) % productsCount;
+                updateMainProduct(currentIndex);
+                updatePreviews();
+            }
+
+            function prevProduct() {
+                currentIndex = (currentIndex - 1 + productsCount) % productsCount;
+                updateMainProduct(currentIndex);
+                updatePreviews();
+            }
+
+            // Event Listeners
+            nextBtn.addEventListener('click', nextProduct);
+            prevBtn.addEventListener('click', prevProduct);
+
+            // Auto-update every 5 seconds
+            setInterval(nextProduct, 5000);
+
+            // Initial Update
+            updateMainProduct(currentIndex);
+            updatePreviews();
+        });
+    </script>
 
 <?php
 include_once("footer.php");

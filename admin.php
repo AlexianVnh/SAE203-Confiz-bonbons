@@ -20,9 +20,9 @@
 
                 <label for="name">Adresse (n° / nom de la rue / code postal / ville / pays)</label>
                 <div>
-                    <input class="numero-rue" type="text" id="numero-rue" name="numero-rue" placeholder="123" required>
+                    <input class="numero-rue" type="text" id="numero-rue" name="numero-rue" pattern="[0-9]*" placeholder="123" required>
                     <input class="nom-rue" type="text" id="nom-rue" name="nom-rue" placeholder="RUE du chemin vert" required>
-                    <input class="code-postal" type="text" id="code-postal" name="code-postal" placeholder="22300" required>
+                    <input class="code-postal" type="text" id="code-postal" name="code-postal" pattern="[0-9]*" placeholder="22300" required>
                     <input class="ville" type="text" id="ville" name="ville" placeholder="Lannion" required>
                     <input class="pays" type="text" id="pays" name="pays" placeholder="France" required>
                     <input class="admin-submit-buttons" type="submit" value="Ajouter" required>              
@@ -121,6 +121,39 @@
                     if (isset($_SESSION['suppression_produit'])) {
                         echo '<p class="ajout-boutique-feedback">' . $_SESSION['suppression_produit'] . "</p>";
                         unset($_SESSION['suppression_produit']);
+                    }
+                ?>    
+            </form>        
+        </article>
+
+        <!-- 4 - Droits utilisateur -->
+        <article class="carte-admin-modif">
+            <h2 class="paytone-one p-26">Changer les droits utilisateur</h2>
+            <form action="changement_role.php" class="form-ajout-boutique" method="post">
+                <label for="id-utilisateur">Noms des gérants / admins</label>
+                <select id="id-utilisateur" name="id-utilisateur" required>
+                <?php
+                    $utilisateurs = get_user_gerant();
+                    foreach ($utilisateurs as $utilisateur) {
+                ?>
+                    <option value="<?=$utilisateur['id']?>"><?=$utilisateur['username']?> : <?=$utilisateur['role']?></option>
+                <?php
+                    } /* fin foreach */
+                ?>
+                </select>
+
+                <label for="role-utilisateur">Role que vous souhaitez donner</label>
+                <select id="role-utilisateur" name="role-utilisateur" required>
+                    <option value="gerant">gerant</option>
+                    <option value="admin">administrateur</option>
+                </select>
+
+                <input class="admin-submit-buttons" type="submit" value="Changer" required>                       
+
+                <?php
+                    if (isset($_SESSION['changement_role'])) {
+                        echo '<p class="ajout-boutique-feedback">' . $_SESSION['changement_role'] . "</p>";
+                        unset($_SESSION['changement_role']);
                     }
                 ?>    
             </form>        

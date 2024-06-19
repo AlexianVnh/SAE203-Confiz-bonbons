@@ -54,7 +54,7 @@ include_once("../header.php");
                     <div>
                         <i class="fa-regular fa-user"></i>                        
                         <select name="role" id="role">
-                            <option value="user">Client</option>
+                            <option value="client">Client</option>
                             <option value="gerant">Gérant</option>
                             <option value="admin">Administrateur</option>
                         </select>

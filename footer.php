@@ -16,13 +16,13 @@
                 <a href="">Politiques de confidentialité</a>
                 <a href="">Remboursements</a>
                 <h2 class="p-30">Sitemap</h2>
-                <a href="">Accueil</a>
-                <a href="">Boutiques</a>
-                <a href="">Connexion</a>
+                <a href="<?=CHEMIN_URL_SERVER?>index.php">Accueil</a>
+                <a href="<?=CHEMIN_URL_SERVER?>boutiques.php">Boutiques</a>
+                <a href="<?=CHEMIN_URL_SERVER?>account/login.php">Connexion</a>
             </div>
             <div>
                 <h2 class="p-30">Sitemap</h2>
-                <a href="index.php#notre_histoire">Notre histoire</a>
+                <a href="<?=CHEMIN_URL_SERVER?>index.php#notre_histoire">Notre histoire</a>
                 <a href="">Nos collaborateurs</a>
                 <a href="">Notre équipe</a>
             </div>

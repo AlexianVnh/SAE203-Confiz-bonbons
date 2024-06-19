@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     const registerButton = document.querySelector('.register-button');
     const loginButton = document.querySelector('.login-button');
-    const form = document.querySelector('form');
+    const form = document.querySelector('.login-form');
     const submitButton = document.querySelector('.submit-button');
     const inscriptionsOnly = document.querySelectorAll('.inscription-only');
 
@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
         registerButton.classList.replace('button-inactive', 'button-active');
         loginButton.classList.replace('button-active', 'button-inactive');
         form.setAttribute('action', 'register_verification.php');
+
         submitButton.setAttribute('value', "S'inscrire");
         inscriptionsOnly.forEach(element => {
             element.style.cssText = 'display: flex !important;';
@@ -20,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
         loginButton.classList.replace('button-inactive', 'button-active');
         registerButton.classList.replace('button-active', 'button-inactive');
         form.setAttribute('action', 'login_verification.php');
+
         submitButton.setAttribute('value', "Se connecter");
         inscriptionsOnly.forEach(element => {
             element.style.cssText = 'display: none !important;';
