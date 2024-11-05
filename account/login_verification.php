@@ -20,7 +20,7 @@ if ($resultat == true){
     exit();
 }
 else{
-    $_SESSION['error'] = "Mauvais login ou mot de passe " . $username . " / " . $role . " / " . $mot_de_passe . " / ";
+    $_SESSION['error'] = "Mauvais login, role ou mot de passe " . $username . " / " . $role;
     header("Location: " . CHEMIN_URL_SERVER . "account/login.php");
     exit();
 }
